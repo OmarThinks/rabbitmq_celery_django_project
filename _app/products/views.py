@@ -10,5 +10,4 @@ class ProductViewSet(viewsets.ModelViewSet):
 	serializer_class = ProductSerializer
 
 	def perform_create(self,serializer):
-		celery_perform_create(self, serializer)
-		return viewsets.ModelViewSet.perform_create(self,serializer)
+		celery_perform_create.delay(self, serializer)
