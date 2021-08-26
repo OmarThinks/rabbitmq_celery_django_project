@@ -9,4 +9,4 @@ class Product(models.Model):
 	in_stock =  models.BooleanField()
 
 	def __str__(self):
-		return (str(self.id) +") "+ self.name + ", "+ str(self.author))
+		return (str(self.id) +") "+ self.name)
