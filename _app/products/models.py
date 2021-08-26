@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 #id,name,price,in_stock,author
 class Product(models.Model):
