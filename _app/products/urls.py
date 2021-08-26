@@ -12,6 +12,3 @@ router.register('products', ProductViewSet)
 urlpatterns = [
 	path('api/', include(router.urls)),
 ]
-
-
-#    path('api/', include((router.urls))),
