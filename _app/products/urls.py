@@ -10,5 +10,8 @@ router.register('products', ProductViewSet)
 
 
 urlpatterns = [
-    path('api/', include((router.urls,"celery_app"), namespace="api")),
+	path('api/', include(router.urls)),
 ]
+
+
+#    path('api/', include((router.urls))),
