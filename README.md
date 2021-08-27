@@ -3,6 +3,12 @@ A project using Celery, RabbitMQ with Django
 
 
 
+<img src="images/rabbitmq.gif">
+
+
+
+
+
 # A) How to run:
 
 You need to open 2 bash command line tabs:
@@ -60,6 +66,10 @@ These comammnds will run the celery consumer.
 </tr>
 </table>
 
+<img src="images/list.gif">
+
+
+
 ## B-2) `api/products/` (POST):
 
 <table>
@@ -68,10 +78,14 @@ These comammnds will run the celery consumer.
 	<th>Communication Method</th>
 </tr>
 <tr>
-	<td>Get a list of products</td>
-	<td>Immediately connect to database to get the response</td>
+	<td>Add a New Product</td>
+	<td>Queued</td>
 </tr>
 </table>
+
+
+<img src="images/post.gif">
+
 
 ## B-3) `api/products/<int:id>` (GET):
 
@@ -81,10 +95,12 @@ These comammnds will run the celery consumer.
 	<th>Communication Method</th>
 </tr>
 <tr>
-	<td>Get a list of products</td>
+	<td>Get details of a specific product</td>
 	<td>Immediately connect to database to get the response</td>
 </tr>
 </table>
+
+
 
 ## B-4) `api/products/<int:id>` (PUT):
 
@@ -94,15 +110,30 @@ These comammnds will run the celery consumer.
 	<th>Communication Method</th>
 </tr>
 <tr>
-	<td>Get a list of products</td>
-	<td>Immediately connect to database to get the response</td>
+	<td>Update an existing product</td>
+	<td>Queued</td>
 </tr>
 </table>
+
+
 
 ## B-5) `api/products/<int:id>` (DELETE):
 
 
+<table>
+<tr>
+	<th>Functionality</th>
+	<th>Communication Method</th>
+</tr>
+<tr>
+	<td>Delete an existing product</td>
+	<td>Queued</td>
+</tr>
+</table>
 
+
+
+<img src="images/details_delete_update.gif">
 
 
 
