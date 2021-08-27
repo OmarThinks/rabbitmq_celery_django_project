@@ -31,8 +31,9 @@ def celery_perform_create_product(validated_data):
 
 
 @shared_task
-def celery_perform_update():
-	pass
+def celery_perform_update(product_id, validated_data):
+	p = Product.objects.get(pk=product_id)
+	p.update(**validated_data)
 
 @shared_task
 def celery_perform_delete():
