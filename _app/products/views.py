@@ -6,7 +6,8 @@ from rest_framework import status
 import pprint
 pp = pprint.PrettyPrinter(indent=4).pprint
 
-from .tasks import celery_perform_create_product,celery_perform_update_product, add
+from .tasks import (celery_perform_create_product, 
+	celery_perform_update_product, celery_perform_delete_product)
 
 class ProductViewSet(viewsets.ModelViewSet):
 	queryset = Product.objects.all()
@@ -28,7 +29,9 @@ class ProductViewSet(viewsets.ModelViewSet):
 			# If 'prefetch_related' has been applied to a queryset, we need to
 			# forcibly invalidate the prefetch cache on the instance.
 			instance._prefetched_objects_cache = {}
-
 		return Response(serializer.validated_data)
 
-
+	def destroy(self, request, *args, **kwargs):
+		instance = self.get_object()
+		celery_perform_delete_product(instance.id)
+		return Response(status=status.HTTP_204_NO_CONTENT)

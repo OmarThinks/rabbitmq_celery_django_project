@@ -36,10 +36,8 @@ def celery_perform_create_product(validated_data):
 
 @shared_task
 def celery_perform_update_product(product_id, validated_data):
-	#p = Product.objects.get(pk=product_id)
-	#p.update(**validated_data)
 	Product.objects.filter(pk=product_id).update(**validated_data)
 
 @shared_task
-def celery_perform_delete_product():
-	pass
+def celery_perform_delete_product(product_id):
+	Product.objects.get(pk=product_id).delete()
